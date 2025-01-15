@@ -11,10 +11,10 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | Login new user<br/>(t@jwt.com, pw: test)            |login.tsx           |[PUT] /api/auth    |INSERT INTO auth (token, userId) VALUES (?, ?) |
 | Order pizza                                         |     menu.tsx       | [POST] /api/order | INSERT INTO dinerOrder (dinerId, franchiseId, storeId, date) VALUES (?, ?, ?, now()) INSERT INTO orderItem (orderId, menuId, description, price) VALUES (?, ?, ?, ?) |
 | Verify pizza                                        |delivery.tsx        |[POST] /api/order/verify |none    |
-| View profile page                                   |                    |                   |              |
-| View franchise<br/>(as diner)                       |                    |                   |              |
-| Logout                                              |                    |                   |              |
-| View About page                                     |                    |                   |              |
+| View profile page                                   |dinerDashboard.tsx  |[GET] /api/order   |SELECT id, franchiseId, storeId, date FROM dinerOrder WHERE dinerId=? LIMIT ?,? SELECT id, menuId, description, price FROM orderItem WHERE orderId=? |
+| View franchise<br/>(as diner)                       |franchiseDashboard.tsx |[GET] /api/franchise/:userId |SELECT objectId FROM userRole WHERE role='franchisee' AND userId=? SELECT id, name FROM franchise WHERE id in (?)|
+| Logout                                              |logout.tsx          |[DELETE] /api/auth |DELETE FROM auth WHERE token=? |
+| View About page                                     |about.tsx           |none               |none          |
 | View History page                                   |                    |                   |              |
 | Login as franchisee<br/>(f@jwt.com, pw: franchisee) |                    |                   |              |
 | View franchise<br/>(as franchisee)                  |                    |                   |              |
