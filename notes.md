@@ -15,11 +15,11 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | View franchise<br/>(as diner)                       |franchiseDashboard.tsx |[GET] /api/franchise/:userId |SELECT objectId FROM userRole WHERE role='franchisee' AND userId=? SELECT id, name FROM franchise WHERE id in (?)|
 | Logout                                              |logout.tsx          |[DELETE] /api/auth |DELETE FROM auth WHERE token=? |
 | View About page                                     |about.tsx           |none               |none          |
-| View History page                                   |                    |                   |              |
-| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |                    |                   |              |
-| View franchise<br/>(as franchisee)                  |                    |                   |              |
-| Create a store                                      |                    |                   |              |
-| Close a store                                       |                    |                   |              |
+| View History page                                   |history.tsx         |none               |none          |
+| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |login.tsx           |[PUT] /api/auth    |INSERT INTO auth (token, userId) VALUES (?, ?) |
+| View franchise<br/>(as franchisee)                  |franchiseDashboard.tsx |[GET] /api/franchise/:userId |SELECT objectId FROM userRole WHERE role='franchisee' AND userId=? SELECT id, name FROM franchise WHERE id in (?) |
+| Create a store                                      |createStore.tsx     |[POST] /api/franchise/:franchiseId/store |INSERT INTO store (franchiseId, name) VALUES (?, ?) |
+| Close a store                                       |closeStore.tsx   |[DELETE] /api/franchise/:franchiseId/store/:storeId |DELETE FROM store WHERE franchiseId=? AND id=? |
 | Login as admin<br/>(a@jwt.com, pw: admin)           |                    |                   |              |
 | View Admin page                                     |                    |                   |              |
 | Create a franchise for t@jwt.com                    |                    |                   |              |
