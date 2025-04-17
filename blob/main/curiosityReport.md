@@ -56,12 +56,6 @@ Despite these challenges, it is considered a best practice to include at least s
 5. **Parallelize tests** with tools like Playwright Test or Cypress Dashboard.
 
 ---
-## Conclusion:
-
-Got it! Here's a conclusion you can add to the end of your curiosityReport.md file:
-
-
----
 
 ## Conclusion
 
